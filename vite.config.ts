@@ -5,6 +5,8 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  // GitHub Pages deploys to a subdirectory, adjust base path accordingly
+  base: mode === 'production' ? '/HandCrafted/' : '/',
   server: {
     host: "::",
     port: 8080,
@@ -18,5 +20,9 @@ export default defineConfig(({ mode }) => ({
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
+  },
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
   },
 }));
